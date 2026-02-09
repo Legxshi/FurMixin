@@ -29,8 +29,8 @@ apply plugin: 'potemkin-modules'
 defaultTasks 'check', 'build'
 
 // Basic project information
-group = 'net.fabricmc'
-version = buildVersion + "+mixin." + upstreamMixinVersion
+group = 'com.legxshi'
+version = buildVersion + "+furmixin." + upstreamMixinVersion
 
 base {
     archivesName = 'sponge-mixin'
