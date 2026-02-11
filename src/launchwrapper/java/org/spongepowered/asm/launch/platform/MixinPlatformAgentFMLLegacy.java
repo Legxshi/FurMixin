@@ -257,6 +257,12 @@ public class MixinPlatformAgentFMLLegacy extends MixinPlatformAgentAbstract impl
         if (MixinPlatformAgentFMLLegacy.loadedCoreMods.contains(coreModName)) {
             return true;
         }
+
+        // The dev environment seems to load the mod twice, so just check it was already loaded once before.
+        if (GlobalProperties.<List<ITweaker>>get("FURMIXINBOOTER_DEV_ENVIRONMENT") != null) {
+            GlobalProperties.put("FURMIXINBOOTER_DEV_ENVIRONMENT", null);
+            return true;
+        }
         
         // Was it already loaded, check the tweakers list
         try {
