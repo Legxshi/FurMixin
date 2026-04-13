@@ -904,9 +904,23 @@ public final class ClassInfo {
                     this.nestMembers.addAll(nestMembers);
                 }
             }
+
+            for (Callback callback : callbacks) {
+                callback.onInit(this);
+            }
         } finally {
             timer.end();
         }
+    }
+
+    private static final List<Callback> callbacks = new ArrayList<>();
+
+    public static void registerCallback(Callback callback) {
+        callbacks.add(callback);
+    }
+
+    public interface Callback {
+        void onInit(ClassInfo classInfo);
     }
 
     private ClassInfo(Class<?> cls) {

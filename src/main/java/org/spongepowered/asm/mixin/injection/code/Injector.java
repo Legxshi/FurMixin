@@ -394,8 +394,8 @@ public abstract class Injector {
             
             DelegateInitialiser superCall = ctor.findDelegateInitNode();
             if (!superCall.isPresent) {
-                throw new InjectionError(String.format("Delegate constructor lookup failed for %s target on %s", this.annotationType, this.info));
-            }
+                Injector.logger.warn("Suppressed mixin error for backwards compatibility: Delegate constructor lookup failed for %s target on %s", this.annotationType, this.info);
+            } else {
             
             int superCallIndex = ctor.indexOf(superCall.insn);
             int targetIndex = ctor.indexOf(node.getCurrentTarget());
@@ -410,6 +410,7 @@ public abstract class Injector {
                             this.annotationType, superCall, this));
                 }
                 return;
+            }
             }
         }
         
