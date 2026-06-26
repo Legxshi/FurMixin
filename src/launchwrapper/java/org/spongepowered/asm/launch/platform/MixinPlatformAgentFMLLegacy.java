@@ -201,7 +201,7 @@ public class MixinPlatformAgentFMLLegacy extends MixinPlatformAgentAbstract impl
     }
 
     private boolean isIgnoredReparseable() {
-        return this.handle.toString().contains("deobfedDeps");
+        return System.getProperty("java.class.path").contains(this.fileName);
     }
 
     /**
@@ -255,6 +255,12 @@ public class MixinPlatformAgentFMLLegacy extends MixinPlatformAgentAbstract impl
     private boolean isAlreadyInjected(String coreModName) {
         // Did we already inject this ourselves, or was it specified on the command line
         if (MixinPlatformAgentFMLLegacy.loadedCoreMods.contains(coreModName)) {
+            return true;
+        }
+
+        // The dev environment seems to load the mod twice, so just check it was already loaded once before.
+        if (GlobalProperties.<List<ITweaker>>get("FURMIXINBOOTER_DEV_ENVIRONMENT") != null) {
+            GlobalProperties.put("FURMIXINBOOTER_DEV_ENVIRONMENT", null);
             return true;
         }
         
@@ -403,14 +409,19 @@ public class MixinPlatformAgentFMLLegacy extends MixinPlatformAgentAbstract impl
     }
 
     private void injectRemapper() {
+        MixinEnvironment env = MixinEnvironment.getDefaultEnvironment();
         try {
             MixinPlatformAgentAbstract.logger.debug("Creating FML remapper adapter: {}", MixinPlatformAgentFMLLegacy.FML_REMAPPER_ADAPTER_CLASS);
             Class<?> clFmlRemapperAdapter = Class.forName(MixinPlatformAgentFMLLegacy.FML_REMAPPER_ADAPTER_CLASS, true, Launch.classLoader);
             Method mdCreate = clFmlRemapperAdapter.getDeclaredMethod("create");
             IRemapper remapper = (IRemapper)mdCreate.invoke(null);
-            MixinEnvironment.getDefaultEnvironment().getRemappers().add(remapper);
+            env.getRemappers().add(remapper);
         } catch (Exception ex) {
             MixinPlatformAgentAbstract.logger.debug("Failed instancing FML remapper adapter, things will probably go horribly for notch-obf'd mods!");
+        }
+
+        if (env.getOption(MixinEnvironment.Option.REFMAP_REMAP)) {
+            env.getRemappers().add(new org.spongepowered.asm.obfuscation.FMLLegacyDevRemapper(env));
         }
     }
 

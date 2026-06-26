@@ -299,4 +299,7 @@ public class MixinPlatformManager {
         this.connectors.addConnector(connectorClass);
     }
 
+    public final MixinContainer addContainer(java.net.URI uri) {
+        return addContainer(new org.spongepowered.asm.launch.platform.container.ContainerHandleURI(uri));
+    }
 }

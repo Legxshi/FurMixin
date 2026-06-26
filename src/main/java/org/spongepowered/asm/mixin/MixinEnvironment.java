@@ -677,7 +677,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_9 && ASM.isAtLeastVersion(6);
+                return JavaVersion.current() >= JavaVersion.JAVA_9 && ASM.getMaxSupportedClassVersion() >= Opcodes.V9;
             }
             
         },
@@ -690,7 +690,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_10 && ASM.isAtLeastVersion(6, 1);
+                return JavaVersion.current() >= JavaVersion.JAVA_10 && ASM.getMaxSupportedClassVersion() >= Opcodes.V10;
             }
             
         },
@@ -703,7 +703,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_11 && ASM.isAtLeastVersion(7);
+                return JavaVersion.current() >= JavaVersion.JAVA_11 && ASM.getMaxSupportedClassVersion() >= Opcodes.V11;
             }
             
         },
@@ -716,7 +716,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_12 && ASM.isAtLeastVersion(7);
+                return JavaVersion.current() >= JavaVersion.JAVA_12 && ASM.getMaxSupportedClassVersion() >= Opcodes.V12;
             }
             
         },
@@ -729,7 +729,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_13 && ASM.isAtLeastVersion(7);
+                return JavaVersion.current() >= JavaVersion.JAVA_13 && ASM.getMaxSupportedClassVersion() >= Opcodes.V13;
             }
             
         },
@@ -744,7 +744,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_14 && ASM.isAtLeastVersion(8);
+                return JavaVersion.current() >= JavaVersion.JAVA_14 && ASM.getMaxSupportedClassVersion() >= Opcodes.V14;
             }
             
         },
@@ -759,7 +759,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_15 && ASM.isAtLeastVersion(9);
+                return JavaVersion.current() >= JavaVersion.JAVA_15 && ASM.getMaxSupportedClassVersion() >= Opcodes.V15;
             }
             
         },
@@ -773,7 +773,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_16 && ASM.isAtLeastVersion(9);
+                return JavaVersion.current() >= JavaVersion.JAVA_16 && ASM.getMaxSupportedClassVersion() >= Opcodes.V16;
             }
             
         },
@@ -787,7 +787,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_17 && ASM.isAtLeastVersion(9, 1);
+                return JavaVersion.current() >= JavaVersion.JAVA_17 && ASM.getMaxSupportedClassVersion() >= Opcodes.V17;
             }
             
         },
@@ -801,7 +801,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_18 && ASM.isAtLeastVersion(9, 2);
+                return JavaVersion.current() >= JavaVersion.JAVA_18 && ASM.getMaxSupportedClassVersion() >= Opcodes.V18;
             }
             
         },
@@ -815,7 +815,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_19 && ASM.isAtLeastVersion(9, 3);
+                return JavaVersion.current() >= JavaVersion.JAVA_19 && ASM.getMaxSupportedClassVersion() >= Opcodes.V19;
             }
             
         },
@@ -829,7 +829,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_20 && ASM.isAtLeastVersion(9, 4);
+                return JavaVersion.current() >= JavaVersion.JAVA_20 && ASM.getMaxSupportedClassVersion() >= Opcodes.V20;
             }
             
         },
@@ -843,7 +843,7 @@ public final class MixinEnvironment implements ITokenProvider {
             
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_21 && ASM.isAtLeastVersion(9, 5);
+                return JavaVersion.current() >= JavaVersion.JAVA_21 && ASM.getMaxSupportedClassVersion() >= Opcodes.V21;
             }
 
         },
@@ -857,7 +857,7 @@ public final class MixinEnvironment implements ITokenProvider {
 
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_22 && ASM.isAtLeastVersion(9, 6);
+                return JavaVersion.current() >= JavaVersion.JAVA_22 && ASM.getMaxSupportedClassVersion() >= Opcodes.V22;
             }
 
         },
@@ -871,7 +871,7 @@ public final class MixinEnvironment implements ITokenProvider {
 
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_23 && ASM.isAtLeastVersion(9, 7);
+                return JavaVersion.current() >= JavaVersion.JAVA_23 && ASM.getMaxSupportedClassVersion() >= Opcodes.V23;
             }
 
         },
@@ -885,7 +885,7 @@ public final class MixinEnvironment implements ITokenProvider {
 
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_24 && ASM.isAtLeastVersion(9, 7, 1);
+                return JavaVersion.current() >= JavaVersion.JAVA_24 && ASM.getMaxSupportedClassVersion() >= Opcodes.V24;
             }
 
         },
@@ -899,7 +899,7 @@ public final class MixinEnvironment implements ITokenProvider {
 
             @Override
             boolean isSupported() {
-                return JavaVersion.current() >= JavaVersion.JAVA_25 && ASM.isAtLeastVersion(9, 8);
+                return JavaVersion.current() >= JavaVersion.JAVA_25 && ASM.getMaxSupportedClassVersion() >= Opcodes.V25;
             }
 
         },

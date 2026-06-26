@@ -161,4 +161,19 @@ public final class GlobalProperties {
         return service.getPropertyString(key.resolve(service), defaultValue);
     }
 
+    public static <T> T get(String key) {
+        return get(Keys.of(key));
+    }
+
+    public static void put(String key, Object value) {
+        put(Keys.of(key), value);
+    }
+
+    public static <T> T get(String key, T defaultValue) {
+        return get(Keys.of(key), defaultValue);
+    }
+
+    public static String getString(String key, String defaultValue) {
+        return getString(Keys.of(key), defaultValue);
+    }
 }
